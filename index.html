@@ -26,6 +26,56 @@
     .btn{border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);
       padding:10px 12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
     .btn.primary{background:var(--blue);border-color:rgba(59,130,246,.45)}
+    .payBox{
+    background:#111520;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;
+    padding:18px;
+    margin-top:14px;
+    text-align:left;
+    }
+
+    .paySub{
+    color:#aab3c5;
+    margin-top:6px;
+    margin-bottom:12px;
+    font-size:14px;
+    }
+
+    .payBtns{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    }
+
+    .payBtn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 14px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
+    background:#3b82f6;
+    color:white;
+    border:1px solid rgba(59,130,246,0.45);
+    transition:filter .15s ease;
+    }
+
+    .payBtn:hover{ filter:brightness(1.1); }
+
+    .payBtnGhost{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.14);
+    color:#e8ecf3;
+    }
+
+    .payHint{
+     margin-top:12px;
+     color:#aab3c5;
+     font-size:13px;
+     line-height:1.35;
+    }
     .btn:hover{filter:brightness(1.12)}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
     @media (max-width:860px){.grid{grid-template-columns:1fr}}
@@ -69,9 +119,24 @@
         </p>
 
         <div class="cta">
-          <a class="btn primary" id="buyBtn" href="https://buy.stripe.com/test_5kQ8wI7MR7iCa8c1rUfAc00" target="_blank" rel="noopener">
-            Subscribe to Pro
-          </a>
+          <div class="payBox">
+        <h2>Subscribe to Pro</h2>
+      <p class="paySub">Choose your currency:</p>
+
+        <div class="payBtns">
+        <a id="payBRL" class="payBtn" href="https://buy.stripe.com/8x24gs9UZ32m2FKgmOfAc01" target="_blank" rel="noopener">
+        🇧🇷 Pay in BRL (R$)
+        </a>
+
+        <a id="payUSD" class="payBtn payBtnGhost" href="https://buy.stripe.com/5kQ8wI7MR7iCa8c1rUfAc00" target="_blank" rel="noopener">
+        🌍 Pay in USD ($)
+        </a>
+        </div>
+
+        <p class="payHint">
+        After payment, you’ll see your license key and can activate Pro inside the extension.
+  </p>
+</div>
           <a class="btn" id="activateJump">
             Already subscribed? Activate
           </a>
@@ -152,24 +217,24 @@
   </div>
 
   <script>
-document.getElementById("activateJump").addEventListener("click", () => {
+  const activateBtn = document.getElementById("activateJump");
+  const step3 = document.getElementById("activateStep");
 
-  const step = document.getElementById("activateStep");
+  activateBtn?.addEventListener("click", (e) => {
+    e.preventDefault();
 
-  if(!step) return;
+    if (!step3) return;
 
-  step.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
+    // remove highlight se já tiver (pra "piscar" de novo)
+    step3.classList.remove("highlight");
+    void step3.offsetWidth; // força reflow pra reativar animação
+
+    step3.classList.add("highlight");
+    step3.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    // opcional: remove highlight depois de 2.5s
+    setTimeout(() => step3.classList.remove("highlight"), 2500);
   });
-
-  step.classList.add("highlight");
-
-  setTimeout(() => {
-    step.classList.remove("highlight");
-  }, 1200);
-
-});
 </script>
 </body>
 </html>
