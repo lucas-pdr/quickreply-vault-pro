@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QuickReply Vault Pro</title>
+  <style>
+    :root{
+      --bg:#0b0d12; --card:#0f1320; --text:#e8ecf3; --muted:rgba(232,236,243,.75);
+      --border:rgba(255,255,255,.12); --blue:#3b82f6;
+    }
+    *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    html{scroll-behavior:smooth;}
+    body{margin:0;background:var(--bg);color:var(--text)}
+    a{color:inherit}
+    .wrap{max-width:980px;margin:0 auto;padding:28px 16px 60px}
+    .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .brand{font-weight:900;letter-spacing:.2px}
+    .pill{font-size:12px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
+    .hero{margin-top:26px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+    @media (max-width:860px){.hero{grid-template-columns:1fr}}
+    .h1{font-size:38px;line-height:1.08;margin:0 0 10px 0;font-weight:950}
+    .p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
+    .card{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:16px}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{border:1px solid var(--border);background:rgba(255,255,255,.06);color:var(--text);
+      padding:10px 12px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+    .btn.primary{background:var(--blue);border-color:rgba(59,130,246,.45)}
+    .btn:hover{filter:brightness(1.12)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .feature h3{margin:0 0 6px 0;font-size:14px}
+    .feature p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+    .price{display:flex;align-items:baseline;gap:8px;margin-top:2px}
+    .price .big{font-size:34px;font-weight:950}
+    .price .small{color:var(--muted);font-size:13px}
+    .steps{margin-top:14px;display:grid;gap:10px}
+    .step{display:flex;gap:10px;align-items:flex-start}
+    .num{width:26px;height:26px;border-radius:10px;background:rgba(59,130,246,.18);
+      border:1px solid rgba(59,130,246,.45);display:flex;align-items:center;justify-content:center;font-weight:900}
+    .faq{margin-top:16px}
+    .faq details{border:1px solid var(--border);border-radius:14px;padding:12px;background:rgba(255,255,255,.03)}
+    .faq details+details{margin-top:10px}
+    .faq summary{cursor:pointer;font-weight:800}
+    footer{margin-top:18px;color:var(--muted);font-size:12px}
+    code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px;border:1px solid var(--border)}
+
+    /* anchor + highlight */
+    .anchor{position:relative;top:-12px;}
+    .highlight{
+     outline: 2px solid rgba(59,130,246,.9);
+     box-shadow: 0 0 0 6px rgba(59,130,246,.15);
+     border-radius:12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand">QuickReply Vault <span class="pill">Pro</span></div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <h1 class="h1">Templates in 1 click.<br/>Pro for power users.</h1>
+        <p class="p">
+          Save reusable replies and insert them instantly on Gmail, Outlook, LinkedIn and WhatsApp Web.
+          Pro unlocks organization and personalization for teams and professionals.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" id="buyBtn" href="https://buy.stripe.com/test_5kQ8wI7MR7iCa8c1rUfAc00" target="_blank" rel="noopener">
+            Subscribe to Pro
+          </a>
+          <a class="btn" id="activateJump">
+            Already subscribed? Activate
+          </a>
+        </div>
+
+        <div class="grid">
+          <div class="feature card">
+            <h3>Folders (Pro)</h3>
+            <p>Organize templates by project, client or department.</p>
+          </div>
+          <div class="feature card">
+            <h3>Personalized fields (Pro)</h3>
+            <p>Use fields like <code>[Name]</code> and fill them when inserting.</p>
+          </div>
+          <div class="feature card">
+            <h3>Unlimited templates</h3>
+            <p>No limits. Build a full message library.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="rightCard">
+        <div id="how" class="anchor"></div>
+
+        <div class="pill">Pricing</div>
+        <div class="price">
+          <div class="big">$5</div>
+          <div class="small">/ month</div>
+        </div>
+        <p class="p" style="margin-top:8px;">
+          Cancel anytime. When your subscription ends, Pro turns off automatically.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <div style="font-weight:900">Subscribe</div>
+              <div class="p">Complete the payment on Stripe.</div>
+            </div>
+          </div>
+
+          <div id="activate" class="anchor"></div>
+
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <div style="font-weight:900">Get your license key</div>
+              <div class="p">You’ll see it in your customer portal / confirmation flow.</div>
+            </div>
+          </div>
+
+          <div class="step" id="activateStep">
+            <div class="num">3</div>
+            <div>
+              <div style="font-weight:900">Activate in the extension</div>
+              <div class="p">Open QuickReply Vault → <b>Unlock Pro</b> → paste the key → Activate.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Will it work on multiple computers?</summary>
+            <div class="p" style="margin-top:8px;">Pro is validated online. You may activate on your own devices.</div>
+          </details>
+          <details>
+            <summary>What happens if I cancel?</summary>
+            <div class="p" style="margin-top:8px;">Your license becomes inactive and Pro features are disabled automatically.</div>
+          </details>
+        </div>
+
+        <footer>
+          Support: <span style="opacity:.9">lucaspdr_214@outlook.com</span>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+document.getElementById("activateJump").addEventListener("click", () => {
+
+  const step = document.getElementById("activateStep");
+
+  if(!step) return;
+
+  step.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  step.classList.add("highlight");
+
+  setTimeout(() => {
+    step.classList.remove("highlight");
+  }, 1200);
+
+});
+</script>
+</body>
+</html>
